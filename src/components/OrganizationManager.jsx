@@ -18,7 +18,7 @@ const OrganizationManager = () => {
   // ✅ Fetch all organizations for the logged-in user
   const fetchOrgs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/org/my", {
+      const res = await axios.get("https://chat-backend-1-twvb.onrender.com/api/org/my", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrgs(res.data);
@@ -31,7 +31,7 @@ const OrganizationManager = () => {
   const createOrg = async () => {
     if (!name.trim()) return alert("Enter organization name!");
     await axios.post(
-      "http://localhost:5000/api/org/create",
+      "https://chat-backend-1-twvb.onrender.com/api/org/create",
       { name },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -43,7 +43,7 @@ const OrganizationManager = () => {
   const renameOrg = async (id) => {
     if (!newName.trim()) return alert("Enter a new name!");
     await axios.put(
-      `http://localhost:5000/api/org/${id}/rename`,
+      `https://chat-backend-1-twvb.onrender.com/api/org/${id}/rename`,
       { name: newName },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -55,7 +55,7 @@ const OrganizationManager = () => {
   // ✅ Switch active organization
   const switchOrg = async (id) => {
     await axios.post(
-      "http://localhost:5000/api/org/active",
+      "https://chat-backend-1-twvb.onrender.com/api/org/active",
       { organizationId: id },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -65,7 +65,7 @@ const OrganizationManager = () => {
   // ✅ Fetch organization members
   const fetchMembers = async (id) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/org/${id}/members`, {
+      const res = await axios.get(`https://chat-backend-1-twvb.onrender.com/api/org/${id}/members`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMembers(res.data);
@@ -78,7 +78,7 @@ const OrganizationManager = () => {
   const inviteMember = async () => {
     if (!email.trim()) return alert("Enter email!");
     await axios.post(
-      "http://localhost:5000/api/org/invite",
+      "https://chat-backend-1-twvb.onrender.com/api/org/invite",
       { organizationId: selectedOrg, email },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -89,7 +89,7 @@ const OrganizationManager = () => {
   // ✅ Remove member
   const removeMember = async (memberId) => {
     await axios.post(
-      "http://localhost:5000/api/org/remove-member",
+      "https://chat-backend-1-twvb.onrender.com/api/org/remove-member",
       { organizationId: selectedOrg, memberId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -99,7 +99,7 @@ const OrganizationManager = () => {
   // ✅ Change member role
   const changeRole = async (memberId, newRole) => {
     await axios.post(
-      "http://localhost:5000/api/org/change-role",
+      "https://chat-backend-1-twvb.onrender.com/api/org/change-role",
       { organizationId: selectedOrg, memberId, newRole },
       { headers: { Authorization: `Bearer ${token}` } }
     );

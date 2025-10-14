@@ -7,7 +7,7 @@ const InvitesPage = () => {
 
   const acceptInvite = async () => {
     await axios.post(
-      "http://localhost:5000/api/org/accept-invite",
+      "https://chat-backend-1-twvb.onrender.com/api/org/accept-invite",
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );

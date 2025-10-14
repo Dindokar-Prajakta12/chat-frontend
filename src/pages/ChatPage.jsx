@@ -10,28 +10,14 @@ const ChatPage = () => {
 
   const token = localStorage.getItem("token");
 
-  // useEffect(() => {
-  //   if (selectedConversation) {
-  //     const fetchMessages = async () => {
-  //       const res = await axios.get(
-  //         `http://localhost:5000/api/chat/conversations/${selectedConversation}`,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-  //       setMessages(res.data);
-  //     };
-  //     fetchMessages();
-  //   } else {
-  //     setMessages([]);
-  //   }
-  // }, [selectedConversation]);
-
+ 
 
   useEffect(() => {
   const fetchMessages = async () => {
     if (!selectedConversation) return;
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/chat/conversations/${selectedConversation}`,
+        `https://chat-backend-1-twvb.onrender.com/api/chat/conversations/${selectedConversation}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setMessages(res.data);
@@ -49,7 +35,7 @@ const ChatPage = () => {
     if (!input.trim()) return;
 
     const res = await axios.post(
-      "http://localhost:5000/api/chat/send",
+      "https://chat-backend-1-twvb.onrender.com/api/chat/send",
       { message: input, conversationId: selectedConversation },
       { headers: { Authorization: `Bearer ${token}` } }
     );
